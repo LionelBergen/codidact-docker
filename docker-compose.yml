@@ -1,0 +1,25 @@
+version: "3.7"
+services:
+  webapp:
+    build: .
+    container_name: core
+    depends_on:
+      - database
+    ports:
+      - "8555:80"
+      - "5000:5000"
+      - "5001:5001"
+    environment:
+      ConnectionStrings__DefaultConnection: Server=database;database=postgres;Username=postgres;Password=postgres
+      urls: https://0.0.0.0:5000
+  database:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+# TODO: This causes a error: FATAL:  data directory "/var/lib/postgresql/data" has wrong ownership
+#    volumes:
+#      - ./pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
