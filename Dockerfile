@@ -13,8 +13,7 @@ RUN chmod +x ../entrypoint.sh
 RUN dos2unix ../entrypoint.sh
 RUN find . -type f -print0 | xargs -0 dos2unix
 
-RUN dotnet tool install --global dotnet-ef
-ENV PATH "$PATH:$HOME/.dotnet/tools/"
+RUN dotnet tool restore
 
 # our workdir is /app entrypoint is outside of that
 CMD /bin/bash ../entrypoint.sh
