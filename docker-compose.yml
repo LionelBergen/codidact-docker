@@ -10,16 +10,17 @@ services:
       - "5000:5000"
       - "5001:5001"
     environment:
-      ConnectionStrings__DefaultConnection: Server=database;database=postgres;Username=postgres;Password=postgres
+      ConnectionStrings__DefaultConnection: Server=database;database=postgres;Username=database_user;Password=postgres
       urls: https://0.0.0.0:5000
   database:
-    image: postgres
+    container_name: database-core
+    image: postgres:12
     environment:
       POSTGRES_PASSWORD: postgres
-      POSTGRES_USER: postgres
+      POSTGRES_USER: database_user
       POSTGRES_DB: postgres
 # TODO: This causes a error: FATAL:  data directory "/var/lib/postgresql/data" has wrong ownership
 #    volumes:
 #      - ./pgdata:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - "5431:5432"
