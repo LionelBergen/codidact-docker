@@ -1,6 +1,6 @@
 FROM mcr.microsoft.com/dotnet/core/sdk
 # copy the codidact project into the container
-COPY ./core /app
+# COPY ./core /app
 COPY ./entrypoint.sh /entrypoint.sh
 
 # program needed to convert line endings, in case we're on a windows system
