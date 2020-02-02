@@ -12,6 +12,8 @@ services:
     environment:
       ConnectionStrings__DefaultConnection: Server=database;database=postgres;Username=database_user;Password=postgres
       urls: https://0.0.0.0:5000
+    volumes:
+      - ./core:/app
   database:
     container_name: database-core
     image: postgres:12
