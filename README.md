@@ -16,3 +16,8 @@ Known issues
 `Can not read file in context: ....sqlite3\db.lock`
 
 Solution/work around: Build the docker container before running Visual Studio
+
+command not found 'dotnet-format' or 'dotnet-ef'
+
+Solution/work around: use `dotnet dotnet-format` or `dotnet dotnet-format`. Not sure why, this didn't occur back when these tools were install globally.
+
